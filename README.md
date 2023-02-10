@@ -59,7 +59,7 @@ Unit test Coverage, result = 66.7%
 - Display all data sublist (include pagination, filter[Search by: title, description], sort)
 - Display data sublist by id
 - Create data sublist with single/multiple upload file (validation type: pdf & txt) or without upload
-- Update data list
+- Update data sublist
 - Delete data sublist by id
 
 > Technical specifications
