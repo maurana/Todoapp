@@ -34,12 +34,12 @@ Migrate with MySQL
 
 Launch server with the migrated PostgreSQL
 ```bash
-> go run main.go lauch-postgres
+> go run main.go launch-postgres
 ```
 
 Launch server with the migrated MySQL
 ```bash
-> go run main.go migrate-mysql
+> go run main.go launch-mysql
 ```
 
 Unit test Coverage, result = 66.7%
