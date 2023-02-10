@@ -1,0 +1,920 @@
+---
+schemes:
+- http
+swagger: '2.0'
+info:
+  description: Todo App server.
+  title: todoapp
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: API Support
+    url: http://www.swagger.io/support
+    email: support@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.0.1
+host: ''
+basePath: "/"
+paths:
+  "/list":
+    get:
+      description: Get list
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      tags:
+      - list
+      summary: Get list
+      parameters:
+      - type: string
+        name: title
+        in: query
+      - type: string
+        name: description
+        in: query
+      - type: string
+        name: created_at
+        in: query
+      - type: string
+        name: created_by
+        in: query
+      - type: string
+        name: modified_at
+        in: query
+      - type: string
+        name: modified_by
+        in: query
+      - type: integer
+        name: page
+        in: query
+      - type: integer
+        name: page_size
+        in: query
+      - type: string
+        name: sort
+        in: query
+      - type: string
+        name: sort_by
+        in: query
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/dto.ListGetResponseDoc"
+        '400':
+          description: Bad Request
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '404':
+          description: Not Found
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '500':
+          description: Internal Server Error
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+    post:
+      description: Create list
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      tags:
+      - list
+      summary: Create list
+      parameters:
+      - description: request body
+        name: request
+        in: body
+        required: true
+        schema:
+          "$ref": "#/definitions/dto.ListCreateRequest"
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/dto.ListCreateResponseDoc"
+        '400':
+          description: Bad Request
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '404':
+          description: Not Found
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '500':
+          description: Internal Server Error
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+  "/list/{id}":
+    delete:
+      description: Delete list
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      tags:
+      - list
+      summary: Delete list
+      parameters:
+      - type: integer
+        description: id path
+        name: id
+        in: path
+        required: true
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/dto.ListDeleteResponseDoc"
+        '400':
+          description: Bad Request
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '404':
+          description: Not Found
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '500':
+          description: Internal Server Error
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+    put:
+      description: Update list
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      tags:
+      - list
+      summary: Update list
+      parameters:
+      - type: integer
+        description: id path
+        name: id
+        in: path
+        required: true
+      - description: request body
+        name: request
+        in: body
+        required: true
+        schema:
+          "$ref": "#/definitions/dto.ListUpdateRequest"
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/dto.ListUpdateResponseDoc"
+        '400':
+          description: Bad Request
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '404':
+          description: Not Found
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '500':
+          description: Internal Server Error
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+  "/list/{id}/":
+    get:
+      description: Get list by id
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      tags:
+      - list
+      summary: Get list by id
+      parameters:
+      - type: integer
+        description: id path
+        name: id
+        in: path
+        required: true
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/dto.ListGetByIDResponseDoc"
+        '400':
+          description: Bad Request
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '404':
+          description: Not Found
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '500':
+          description: Internal Server Error
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+  "/sublist":
+    get:
+      description: Get sublist
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      tags:
+      - sublist
+      summary: Get sublist
+      parameters:
+      - type: string
+        name: title
+        in: query
+      - type: string
+        name: description
+        in: query
+      - type: string
+        name: created_at
+        in: query
+      - type: string
+        name: created_by
+        in: query
+      - type: string
+        name: modified_at
+        in: query
+      - type: string
+        name: modified_by
+        in: query
+      - type: integer
+        name: page
+        in: query
+      - type: integer
+        name: page_size
+        in: query
+      - type: string
+        name: sort
+        in: query
+      - type: string
+        name: sort_by
+        in: query
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/dto.SublistGetResponseDoc"
+        '400':
+          description: Bad Request
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '404':
+          description: Not Found
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '500':
+          description: Internal Server Error
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+    post:
+      description: Create sublist
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      tags:
+      - sublist
+      summary: Create sublist
+      parameters:
+      - description: request body
+        name: request
+        in: body
+        required: true
+        schema:
+          "$ref": "#/definitions/dto.SublistCreateRequest"
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/dto.SublistCreateResponseDoc"
+        '400':
+          description: Bad Request
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '404':
+          description: Not Found
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '500':
+          description: Internal Server Error
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+  "/sublist/{id}":
+    delete:
+      description: Delete sublist
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      tags:
+      - sublist
+      summary: Delete sublist
+      parameters:
+      - type: integer
+        description: id path
+        name: id
+        in: path
+        required: true
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/dto.SublistDeleteResponseDoc"
+        '400':
+          description: Bad Request
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '404':
+          description: Not Found
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '500':
+          description: Internal Server Error
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+    put:
+      description: Update sublist
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      tags:
+      - sublist
+      summary: Update sublist
+      parameters:
+      - type: integer
+        description: id path
+        name: id
+        in: path
+        required: true
+      - description: request body
+        name: request
+        in: body
+        required: true
+        schema:
+          "$ref": "#/definitions/dto.SublistUpdateRequest"
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/dto.SublistUpdateResponseDoc"
+        '400':
+          description: Bad Request
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '404':
+          description: Not Found
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '500':
+          description: Internal Server Error
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+  "/sublist/{id}/":
+    get:
+      description: Get sublist by id
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      tags:
+      - sublist
+      summary: Get sublist by id
+      parameters:
+      - type: integer
+        description: id path
+        name: id
+        in: path
+        required: true
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/dto.SublistGetByIDResponseDoc"
+        '400':
+          description: Bad Request
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '404':
+          description: Not Found
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+        '500':
+          description: Internal Server Error
+          schema:
+            "$ref": "#/definitions/response.errorResponse"
+definitions:
+  abstraction.PaginationInfo:
+    type: object
+    properties:
+      page:
+        type: integer
+      page_size:
+        type: integer
+      sort:
+        type: string
+      sort_by:
+        type: string
+      count:
+        type: integer
+      more_records:
+        type: boolean
+  dto.ListCreateRequest:
+    type: object
+    required:
+    - title
+    - description
+    properties:
+      title:
+        type: string
+      description:
+        type: string
+  dto.ListCreateResponse:
+    type: object
+    required:
+    - title
+    - description
+    properties:
+      list_id:
+        type: integer
+      title:
+        type: string
+      description:
+        type: string
+      created_at:
+        type: string
+      created_by:
+        type: string
+      modified_at:
+        type: string
+      modified_by:
+        type: string
+      sublist:
+        description: relations
+        type: array
+        items:
+          "$ref": "#/definitions/model.SublistEntityModel"
+      listfile:
+        description: relations
+        type: array
+        items:
+          "$ref": "#/definitions/model.ListfileEntityModel"
+  dto.ListCreateResponseDoc:
+    type: object
+    properties:
+      body:
+        type: object
+        properties:
+          data:
+            "$ref": "#/definitions/dto.ListCreateResponse"
+          meta:
+            "$ref": "#/definitions/response.Meta"
+  dto.ListDeleteResponse:
+    type: object
+    required:
+    - title
+    - description
+    properties:
+      list_id:
+        type: integer
+      title:
+        type: string
+      description:
+        type: string
+      created_at:
+        type: string
+      created_by:
+        type: string
+      modified_at:
+        type: string
+      modified_by:
+        type: string
+      sublist:
+        description: relations
+        type: array
+        items:
+          "$ref": "#/definitions/model.SublistEntityModel"
+      listfile:
+        description: relations
+        type: array
+        items:
+          "$ref": "#/definitions/model.ListfileEntityModel"
+  dto.ListDeleteResponseDoc:
+    type: object
+    properties:
+      body:
+        type: object
+        properties:
+          data:
+            "$ref": "#/definitions/dto.ListDeleteResponse"
+          meta:
+            "$ref": "#/definitions/response.Meta"
+  dto.ListGetByIDResponse:
+    type: object
+    required:
+    - title
+    - description
+    properties:
+      list_id:
+        type: integer
+      title:
+        type: string
+      description:
+        type: string
+      created_at:
+        type: string
+      created_by:
+        type: string
+      modified_at:
+        type: string
+      modified_by:
+        type: string
+      sublist:
+        description: relations
+        type: array
+        items:
+          "$ref": "#/definitions/model.SublistEntityModel"
+      listfile:
+        description: relations
+        type: array
+        items:
+          "$ref": "#/definitions/model.ListfileEntityModel"
+  dto.ListGetByIDResponseDoc:
+    type: object
+    properties:
+      body:
+        type: object
+        properties:
+          data:
+            "$ref": "#/definitions/dto.ListGetByIDResponse"
+          meta:
+            "$ref": "#/definitions/response.Meta"
+  dto.ListGetResponseDoc:
+    type: object
+    properties:
+      body:
+        type: object
+        properties:
+          data:
+            type: array
+            items:
+              "$ref": "#/definitions/model.ListEntityModel"
+          meta:
+            "$ref": "#/definitions/response.Meta"
+  dto.ListUpdateRequest:
+    type: object
+    required:
+    - id
+    - title
+    - description
+    properties:
+      id:
+        type: integer
+      list_id:
+        type: integer
+      title:
+        type: string
+      description:
+        type: string
+  dto.ListUpdateResponse:
+    type: object
+    required:
+    - title
+    - description
+    properties:
+      list_id:
+        type: integer
+      title:
+        type: string
+      description:
+        type: string
+      created_at:
+        type: string
+      created_by:
+        type: string
+      modified_at:
+        type: string
+      modified_by:
+        type: string
+      sublist:
+        description: relations
+        type: array
+        items:
+          "$ref": "#/definitions/model.SublistEntityModel"
+      listfile:
+        description: relations
+        type: array
+        items:
+          "$ref": "#/definitions/model.ListfileEntityModel"
+  dto.ListUpdateResponseDoc:
+    type: object
+    properties:
+      body:
+        type: object
+        properties:
+          data:
+            "$ref": "#/definitions/dto.ListUpdateResponse"
+          meta:
+            "$ref": "#/definitions/response.Meta"
+  model.ListEntityModel:
+    type: object
+    required:
+    - title
+    - description
+    properties:
+      list_id:
+        type: integer
+      title:
+        type: string
+      description:
+        type: string
+      created_at:
+        type: string
+      created_by:
+        type: string
+      modified_at:
+        type: string
+      modified_by:
+        type: string
+      sublist:
+        description: relations
+        type: array
+        items:
+          "$ref": "#/definitions/model.SublistEntityModel"
+      listfile:
+        description: relations
+        type: array
+        items:
+          "$ref": "#/definitions/model.ListfileEntityModel"
+  dto.SublistCreateRequest:
+    type: object
+    required:
+    - title
+    - description
+    properties:
+      title:
+        type: string
+      description:
+        type: string
+  dto.SublistCreateResponse:
+    type: object
+    required:
+    - title
+    - description
+    properties:
+      sublist_id:
+        type: integer
+      title:
+        type: string
+      description:
+        type: string
+      list_id:
+        type: integer
+      created_at:
+        type: string
+      created_by:
+        type: string
+      modified_at:
+        type: string
+      modified_by:
+        type: string
+      sublistfile:
+        description: relations
+        type: array
+        items:
+          "$ref": "#/definitions/model.SublistfileEntityModel"
+  dto.SublistCreateResponseDoc:
+    type: object
+    properties:
+      body:
+        type: object
+        properties:
+          data:
+            "$ref": "#/definitions/dto.SublistCreateResponse"
+          meta:
+            "$ref": "#/definitions/response.Meta"
+  dto.SublistDeleteResponse:
+    type: object
+    required:
+    - title
+    - description
+    properties:
+      sublist_id:
+        type: integer
+      title:
+        type: string
+      description:
+        type: string
+      list_id:
+        type: integer
+      created_at:
+        type: string
+      created_by:
+        type: string
+      modified_at:
+        type: string
+      modified_by:
+        type: string
+      sublistfile:
+        description: relations
+        type: array
+        items:
+          "$ref": "#/definitions/model.SublistfileEntityModel"
+  dto.SublistDeleteResponseDoc:
+    type: object
+    properties:
+      body:
+        type: object
+        properties:
+          data:
+            "$ref": "#/definitions/dto.SublistDeleteResponse"
+          meta:
+            "$ref": "#/definitions/response.Meta"
+  dto.SublistGetByIDResponse:
+    type: object
+    required:
+    - title
+    - description
+    properties:
+      sublist_id:
+        type: integer
+      title:
+        type: string
+      description:
+        type: string
+      list_id:
+        type: integer
+      created_at:
+        type: string
+      created_by:
+        type: string
+      modified_at:
+        type: string
+      modified_by:
+        type: string
+      sublistfile:
+        description: relations
+        type: array
+        items:
+          "$ref": "#/definitions/model.SublistfileEntityModel"
+  dto.SublistGetByIDResponseDoc:
+    type: object
+    properties:
+      body:
+        type: object
+        properties:
+          data:
+            "$ref": "#/definitions/dto.SublistGetByIDResponse"
+          meta:
+            "$ref": "#/definitions/response.Meta"
+  dto.SublistGetResponseDoc:
+    type: object
+    properties:
+      body:
+        type: object
+        properties:
+          data:
+            type: array
+            items:
+              "$ref": "#/definitions/model.SublistEntityModel"
+          meta:
+            "$ref": "#/definitions/response.Meta"
+  dto.SublistUpdateRequest:
+    type: object
+    required:
+    - id
+    - title
+    - description
+    properties:
+      id:
+        type: integer
+      sublist_id:
+        type: integer
+      title:
+        type: string
+      description:
+        type: string
+  dto.SublistUpdateResponse:
+    type: object
+    required:
+    - title
+    - description
+    properties:
+      sublist_id:
+        type: integer
+      title:
+        type: string
+      description:
+        type: string
+      list_id:
+        type: integer
+      created_at:
+        type: string
+      created_by:
+        type: string
+      modified_at:
+        type: string
+      modified_by:
+        type: string
+      sublistfile:
+        description: relations
+        type: array
+        items:
+          "$ref": "#/definitions/model.SublistfileEntityModel"
+  dto.SublistUpdateResponseDoc:
+    type: object
+    properties:
+      body:
+        type: object
+        properties:
+          data:
+            "$ref": "#/definitions/dto.SublistUpdateResponse"
+          meta:
+            "$ref": "#/definitions/response.Meta"
+  model.SublistEntityModel:
+    type: object
+    required:
+    - title
+    - description
+    properties:
+      sublist_id:
+        type: integer
+      title:
+        type: string
+      description:
+        type: string
+      list_id:
+        type: integer
+      created_at:
+        type: string
+      created_by:
+        type: string
+      modified_at:
+        type: string
+      modified_by:
+        type: string
+      sublistfile:
+        description: relations
+        type: array
+        items:
+          "$ref": "#/definitions/model.SublistfileEntityModel"
+  model.ListfileEntityModel:
+    type: object
+    required:
+    - filename
+    properties:
+      listfile_id:
+        type: integer
+      filename:
+        type: string
+      list_id:
+        type: integer
+      created_at:
+        type: string
+      created_by:
+        type: string
+      modified_at:
+        type: string
+      modified_by:
+        type: string
+  model.SublistfileEntityModel:
+    type: object
+    required:
+    - filename
+    properties:
+      sublistfile_id:
+        type: integer
+      filename:
+        type: string
+      sublist_id:
+        type: integer
+      created_at:
+        type: string
+      created_by:
+        type: string
+      modified_at:
+        type: string
+      modified_by:
+        type: string
+  response.Meta:
+    type: object
+    properties:
+      info:
+        "$ref": "#/definitions/abstraction.PaginationInfo"
+      message:
+        type: string
+        default: 'true'
+      success:
+        type: boolean
+        default: true
+  response.errorResponse:
+    type: object
+    properties:
+      error:
+        type: string
+      meta:
+        "$ref": "#/definitions/response.Meta"
