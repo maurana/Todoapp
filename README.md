@@ -2,7 +2,7 @@
 <p align="left">
 <a href="https://github.com/maurana"><img src="https://img.shields.io/badge/creator-%40thisismaulanaa-blueviolet" alt="Creator"></a>
 <a href="https://echo.labstack.com/"><img src="https://img.shields.io/badge/echo v4-important" alt="Framework"></a>
-<a href="https://www.nuget.org/packages/SaythonMQ"><img src="https://img.shields.io/badge/Go v1.18-yellowgreen" alt="Programming"></a>
+<a href="https://go.dev/"><img src="https://img.shields.io/badge/Go v1.18-yellowgreen" alt="Programming"></a>
 </p>
 
 > Build & Run procedure
